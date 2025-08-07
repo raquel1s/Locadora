@@ -129,7 +129,8 @@ public class AluguelDAO {
                 "ON a.filme_id = f.id " +
                 "LEFT JOIN cliente c " +
                 "ON a.cliente_id = c.id " +
-                "WHERE f.id = ?";
+                "WHERE f.id = ? " +
+                "ORDER BY c.id";
 
         try(Connection conn = Conexao.conectar();
         PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -162,7 +163,8 @@ public class AluguelDAO {
                 "ON a.filme_id = f.id " +
                 "LEFT JOIN cliente c " +
                 "ON a.cliente_id = c.id " +
-                "WHERE c.id = ?";
+                "WHERE c.id = ? " +
+                "ORDER BY f.id";
 
         try(Connection conn = Conexao.conectar();
         PreparedStatement stmt = conn.prepareStatement(sql)){

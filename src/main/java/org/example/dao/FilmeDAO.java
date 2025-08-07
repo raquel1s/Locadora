@@ -53,4 +53,33 @@ public class FilmeDAO {
 
         return filmes;
     }
+
+    public static Filme buscarFilmePorId(int id){
+        String sql = "SELECT id, titulo, genero, anoLancamento FROM filme WHERE id = ?";
+
+        int filmeId = 0;
+        String titulo = "";
+        String genero = "";
+        int anoLancamento = 0;
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(sql)){
+
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next()){
+                filmeId = rs.getInt("id");
+                titulo = rs.getString("titulo");
+                genero = rs.getString("genero");
+                anoLancamento = rs.getInt("anoLancamento");
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return new Filme(filmeId, titulo, genero, anoLancamento);
+    }
 }

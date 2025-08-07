@@ -67,6 +67,10 @@ public class Main {
         System.out.println("\nDigite o id do filme para ver quais clientes alugaram: ");
         int id = SC.nextInt();
 
+        Filme filme = FilmeDAO.buscarFilmePorId(id);
+
+        System.out.println("Filme " + filme.getTitulo());
+
         for(Cliente c : AluguelDAO.listarClientesPorFilme(id)){
             System.out.println(c);
         }
