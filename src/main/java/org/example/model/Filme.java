@@ -51,4 +51,13 @@ public class Filme {
     public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
+
+    @Override
+    public String toString() {
+        return "\nId - " + id +
+                "\nTítulo - " + titulo +
+                "\nGênero - " + genero +
+                "\nAno de Lançamento - " + anoLancamento +
+                "\n";
+    }
 }

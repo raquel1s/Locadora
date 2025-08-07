@@ -1,5 +1,6 @@
 package org.example.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Aluguel {
@@ -7,10 +8,10 @@ public class Aluguel {
     private int id;
     private int clienteId;
     private int filmeId;
-    private Date dataAluguel;
-    private Date dataDevolucao;
+    private LocalDate dataAluguel;
+    private LocalDate dataDevolucao;
 
-    public Aluguel(int id, int clienteId, int filmeId, Date dataAluguel, Date dataDevolucao) {
+    public Aluguel(int id, int clienteId, int filmeId, LocalDate dataAluguel, LocalDate dataDevolucao) {
         this.id = id;
         this.clienteId = clienteId;
         this.filmeId = filmeId;
@@ -18,9 +19,20 @@ public class Aluguel {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public Aluguel(int clienteId, int filmeId, Date dataAluguel, Date dataDevolucao) {
+    public Aluguel(int clienteId, int filmeId, LocalDate dataAluguel, LocalDate dataDevolucao) {
         this.clienteId = clienteId;
         this.filmeId = filmeId;
+        this.dataAluguel = dataAluguel;
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public Aluguel(int id, LocalDate dataAluguel) {
+        this.id = id;
+        this.dataAluguel = dataAluguel;
+    }
+
+    public Aluguel(int id, LocalDate dataAluguel, LocalDate dataDevolucao) {
+        this.id = id;
         this.dataAluguel = dataAluguel;
         this.dataDevolucao = dataDevolucao;
     }
@@ -49,19 +61,26 @@ public class Aluguel {
         this.filmeId = filmeId;
     }
 
-    public Date getDataAluguel() {
+    public LocalDate getDataAluguel() {
         return dataAluguel;
     }
 
-    public void setDataAluguel(Date dataAluguel) {
+    public void setDataAluguel(LocalDate dataAluguel) {
         this.dataAluguel = dataAluguel;
     }
 
-    public Date getDataDevolucao() {
+    public LocalDate getDataDevolucao() {
         return dataDevolucao;
     }
 
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+
+    @Override
+    public String toString() {
+        return "\nId - " + id +
+                "\nData do Aluguel - " + dataAluguel +
+                "\n";
     }
 }
